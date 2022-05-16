@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import CreateParkingLot from './src/CreateParkingLot';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import VehicalAllotment from './src/VehicalAllotment';
+import { ParkingLotContextProvider } from './src/Context/ParkingLotContext';
+import ExitParkingLot from './src/ExitParkingLot';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <BrowserRouter>
+      <ParkingLotContextProvider>
+        <Routes>
+          <Route path='/' element={<CreateParkingLot />} />
+          <Route path='/allotment' element={<VehicalAllotment />} />
+          <Route path='/exit' element={<ExitParkingLot />} />
+        </Routes>
+      </ParkingLotContextProvider>
+    </BrowserRouter>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
